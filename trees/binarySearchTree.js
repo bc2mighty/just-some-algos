@@ -52,9 +52,10 @@ class Node {
       }
       return false;
     }
-  
+
     findRecursively(value) {
       let node = this.root;
+      let found = false;
       let traverse = (node) => {
         console.log(node);
         if(!node.left && !node.right) return false;
@@ -62,13 +63,26 @@ class Node {
           node = node.right
         } else if(node.value > value) {
           node = node.left
-        } else if (node.value === value) { 
-          return true;
+        } else if (node.value === value) {
+          found = true;
+          return found;
         };
         traverse(node);
       }
-      let found = traverse(node);
+      traverse(node);
       return found;
+    }
+
+    BFS(){
+      let queue = [], visited = [], node = null;
+      queue.push(this.root)
+      while(queue.length) {
+        node = queue.shift();
+        visited.push(node.value);
+        if(node.left) queue.push(node.left);
+        if(node.right) queue.push(node.right);
+      }
+      return visited;
     }
   }
   
@@ -89,4 +103,7 @@ class Node {
   tree.insert(6);
   // console.log(tree);
   // console.log(tree.find(12));
-  tree.findRecursively(17)
+  // let found = tree.findRecursively(19)
+  // console.log(`found: `,found);
+  const bfsResult = tree.BFS();
+  console.log(`bfsResult: `, bfsResult);

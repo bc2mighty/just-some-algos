@@ -84,6 +84,39 @@ class Node {
       }
       return visited;
     }
+
+    DFS_Pre_Order() {
+      const current = tree.root, data = [];
+      let traverse = (node) => {
+        data.push(node.value);
+        if(node.left) traverse(node.left)
+        if(node.right) traverse(node.right)
+      }
+      traverse(current);
+      return data;
+    }
+
+    DFS_Post_Order() {
+      const current = tree.root, data = [];
+      const traverse = (node) => {
+        if(node.left) traverse(node.left);
+        if(node.right) traverse(node.right);
+        data.push(node.value);
+      }
+      traverse(current);
+      return data;
+    }
+
+    DFS_In_Order() {
+      const current = tree.root, data = [];
+      const traverse = (node) => {
+        if(node.left) traverse(node.left);
+        data.push(node.value);
+        if(node.right) traverse(node.right);
+      }
+      traverse(current);
+      return data;
+    }
   }
   
   //                10
@@ -107,3 +140,9 @@ class Node {
   // console.log(`found: `,found);
   const bfsResult = tree.BFS();
   console.log(`bfsResult: `, bfsResult);
+  const dfsPreOrder = tree.DFS_Pre_Order();
+  console.log(`dfsPreOrder: `, dfsPreOrder);
+  const dfsPostOrrder = tree.DFS_Post_Order();
+  console.log(`dfsPostOrrder: `, dfsPostOrrder);
+  const dfsInOrrder = tree.DFS_In_Order();
+  console.log(`dfsInOrrder: `, dfsInOrrder);

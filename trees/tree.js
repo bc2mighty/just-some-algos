@@ -71,6 +71,16 @@ class Tree {
     traverse();
     return visited;
   }
+
+  DFS_Pre_Order() {
+    const current = tree.node, data = [];
+    function traverse(node) {
+        data.push(node.label);
+        if(node.children.length) {
+            for(let child of node.children) {}
+        }
+    }
+  }
 }
 
 const tree = new Tree(1, 'FCT');
@@ -85,3 +95,4 @@ tree.insert(9, 2, 'Gwarimpa');
 tree.insert(10, 9, 'Lifecamp');
 console.log(JSON.stringify(tree));
 console.log(tree.BFS());
+console.log(tree.postOrderTraversal());

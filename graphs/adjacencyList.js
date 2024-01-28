@@ -29,7 +29,7 @@ class Graph {
 
     DFS_Recursive() {
         const vertexKeys = Object.keys(this.adjacencyList);
-        const vertexKey = vertexKeys[vertexKeys.length - 1]
+        const vertexKey = vertexKeys[0]
         const visited = {}, data = [], currentVertex = vertexKey;
         const adjacencyList = this.adjacencyList;
         const traverse = (vertex) => {
@@ -41,12 +41,66 @@ class Graph {
             }
         }
         traverse(vertexKey)
-        console.log(visited, data);
+        console.log(data);
         return data;
     }
 
     DFS_Iteration() {
-        
+        const vertexKeys = Object.keys(this.adjacencyList);
+        const vertexKey = vertexKeys[0];
+        const visited = {};
+        const data = [];
+        const stack = [vertexKey];
+        let vertex;
+        while(stack.length > 0) {
+            vertex = stack.pop();
+            if(!visited[vertex]) {
+                visited[vertex] = true;
+                data.push(vertex);
+                for(let i = 0;i < this.adjacencyList[vertex].length;i++) {
+                    stack.push(this.adjacencyList[vertex][i])
+                }
+            }
+        }
+        console.log(data);
+        return data;
+    }
+
+    BFS_iteration(node) {
+        if(!this.adjacencyList[node]) return false
+        const queue = [node], data = [], visited = {};
+        while(queue.length > 0) {
+            const vertex = queue.shift()
+            if(!visited[vertex]){
+                visited[vertex] = true;
+                data.push(vertex);
+                for(let i = 0;i < this.adjacencyList[vertex].length;i++) {
+                    queue.push(this.adjacencyList[vertex][i])
+                }
+            }
+        }
+        console.log(data);
+        return data;
+    }
+
+    BFS_Recursive(node) {
+        const queue = [node], data = [], visited = {}, list = this.adjacencyList;
+        let vertex = null;
+        let traverse = () => {
+            if(!queue.length) return false;
+            vertex = queue.shift();
+            if(!visited[vertex]) {
+                data.push(vertex);
+                visited[vertex] = true;
+                for(let i = 0;i < list[vertex].length;i++){
+                    queue.push(list[vertex][i])
+                }
+            }
+            traverse();
+        }
+        traverse();
+        console.log(data);
+        return data;
     }
 }
 
@@ -82,4 +136,11 @@ graph.addEdge('DOUALA', 'OSUN');
 graph.removeEdge('FCT', 'OSUN');
 graph.removeVertex('DOUALA');
 console.log(graph);
+console.log('DFS Recursive Graph Traverse');
 graph.DFS_Recursive();
+console.log('DFS Iteration Graph Traverse');
+graph.DFS_Iteration();
+console.log('BFS Iteration Graph Traverse');
+graph.BFS_iteration('FCT');
+console.log('BFS Recursion Graph Traverse');
+graph.BFS_Recursive('FCT');

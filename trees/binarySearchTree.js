@@ -17,6 +17,7 @@ class Node {
             this.root = newNode;
             return;
         }
+        
         let current = this.root;
         while(true) {
             if(value < current.value) {
@@ -108,7 +109,7 @@ class Node {
     }
 
     DFS_In_Order() {
-      const current = tree.root, data = [];
+      const current = this.root, data = [];
       const traverse = (node) => {
         if(node.left) traverse(node.left);
         data.push(node.value);
@@ -125,24 +126,38 @@ class Node {
   //      1         6
   
   const tree = new BinarySearchTree()
-  tree.insert(10);
-  tree.insert(5);
-  tree.insert(13);
-  tree.insert(2);
-  tree.insert(11);
-  tree.insert(7);
-  tree.insert(16);
-  tree.insert(1);
-  tree.insert(6);
+  // tree.insert(10);
+  // tree.insert(5);
+  // tree.insert(13);
+  // tree.insert(2);
+  // tree.insert(11);
+  // tree.insert(7);
+  // tree.insert(16);
+  // tree.insert(1);
+  // tree.insert(6);
   // console.log(tree);
   // console.log(tree.find(12));
   // let found = tree.findRecursively(19)
   // console.log(`found: `,found);
-  const bfsResult = tree.BFS();
-  console.log(`bfsResult: `, bfsResult);
-  const dfsPreOrder = tree.DFS_Pre_Order();
-  console.log(`dfsPreOrder: `, dfsPreOrder);
-  const dfsPostOrrder = tree.DFS_Post_Order();
-  console.log(`dfsPostOrrder: `, dfsPostOrrder);
-  const dfsInOrrder = tree.DFS_In_Order();
+  // const bfsResult = tree.BFS();
+  // console.log(`bfsResult: `, bfsResult);
+  // const dfsPreOrder = tree.DFS_Pre_Order();
+  // console.log(`dfsPreOrder: `, dfsPreOrder);
+  // const dfsPostOrrder = tree.DFS_Post_Order();
+  // console.log(`dfsPostOrrder: `, dfsPostOrrder);
+  // const dfsInOrrder = tree.DFS_In_Order();
+  // console.log(`dfsInOrrder: `, dfsInOrrder);
+
+  const newTree = new BinarySearchTree();
+  newTree.insert(100);
+  newTree.insert(50);
+  newTree.insert(200);
+  newTree.insert(25);
+  newTree.insert(75);
+  newTree.insert(125);
+  newTree.insert(350);
+  newTree.insert(30);
+  newTree.insert(60);
+  // console.log(newTree);
+  const dfsInOrrder = newTree.DFS_In_Order();
   console.log(`dfsInOrrder: `, dfsInOrrder);

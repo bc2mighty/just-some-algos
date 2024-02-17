@@ -15,5 +15,12 @@ function fibonacci(n) {
     return fibSeries;
 }
 
+function fibonacci_DP(n) {
+    console.log(n, n-1, n-2);
+    if(n <= 2) return 1;
+    return fibonacci_DP(n - 1) + fibonacci_DP(n - 2);
+}
+
 const series = fibonacci(14)
 console.log(series)
+console.log(fibonacci_DP(5));

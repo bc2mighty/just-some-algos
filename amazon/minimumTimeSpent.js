@@ -24,9 +24,6 @@ function minimumTimeSpent(comedyReleaseTime, comedyDuration, dramaReleaseTime, d
     }
     
     // helper function 2
-
-
-    // helper functions
     function getLeastFinishingTime2(arr1, arr2, arr3, arr4) {
         let lfTime = arr1[0] + arr2[0], lfTimeIndex = 0;
         for(let i = 0;i < arr1.length;i++) {

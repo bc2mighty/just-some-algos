@@ -1,3 +1,5 @@
+// https://aonecode.com/Interview-Question/Minimum-Total-Wattage
+
 function minTotalSum(bulb, k) {
     const totalSum = bulb.reduce((acc, val) => acc + val, 0);
     let currentSum = totalSum, leftIndex = 0;

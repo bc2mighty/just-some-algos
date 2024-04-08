@@ -1,3 +1,5 @@
+// https://aonecode.com/amazon-online-assessment-cutoff-ranks
+
 function countLevelUpPlayers(cutOffRank, num, scores) {
     let uniqueScores = [...new Set(scores)], scoresObj = {}, scoreLen = scores.length;
     if(uniqueScores[0] < uniqueScores[uniqueScores.length - 1]) uniqueScores = uniqueScores.reverse();

@@ -1,14 +1,14 @@
+// const head = new SinglyLinkedList(3)
+// head.next = new SinglyLinkedList(2)
+// head.next.next = new SinglyLinkedList(1)
+// head.next.next.next = new SinglyLinkedList(4)
+
 class SinglyLinkedList {
     constructor(data) {
         this.data = data
         this.next = null
     }
 }
-
-// const head = new SinglyLinkedList(3)
-// head.next = new SinglyLinkedList(2)
-// head.next.next = new SinglyLinkedList(1)
-// head.next.next.next = new SinglyLinkedList(4)
 
 const head = new SinglyLinkedList(1)
 head.next = new SinglyLinkedList(6)

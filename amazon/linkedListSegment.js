@@ -10,50 +10,52 @@ class SinglyLinkedList {
     }
 }
 
-const head = new SinglyLinkedList(1)
-head.next = new SinglyLinkedList(6)
-head.next.next = new SinglyLinkedList(7)
-head.next.next.next = new SinglyLinkedList(8)
-head.next.next.next.next = new SinglyLinkedList(10)
+SinglyLinkedList.prototype.push = function(data) {
+    const newNode = new SinglyLinkedList(data)
+    this.next = newNode
+}
+
+const head = new SinglyLinkedList(3)
+head.next = new SinglyLinkedList(2)
+head.next.next = new SinglyLinkedList(1)
+head.next.next.next = new SinglyLinkedList(3)
+head.next.next.next.next = new SinglyLinkedList(2)
+head.next.next.next.next.next = new SinglyLinkedList(1)
+head.next.next.next.next.next.next = new SinglyLinkedList(3)
+head.next.next.next.next.next.next.next = new SinglyLinkedList(2)
+head.next.next.next.next.next.next.next.next = new SinglyLinkedList(1)
+head.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(3)
+head.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(2)
+head.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(1)
+head.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(3)
+head.next.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(2)
+head.next.next.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(1)
+head.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(3)
+head.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(2)
+head.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next.next = new SinglyLinkedList(1)
 
 function locateLongestList(head) {
-    let currentNode = head, mode = undefined, sameValueNode = false;
+    let currentNode = head, mode = undefined, headIsSet = false, prevNode = currentNode;
     while(currentNode) {
-        if(!currentNode.next) break
-        if(!mode && currentNode.next && currentNode.next.data == currentNode.data - 1){ 
-            mode = 'decreasing'
+        if(!headIsSet
+            && ((prevNode.data == currentNode.data - 1)
+            || (prevNode.data == currentNode.data))
+        ){
+            headIsSet = true
             head = currentNode
-            currentNode = head;
-        }
-
-        if(!mode && currentNode.next && currentNode.next.data == currentNode.data + 1){ 
-            mode = 'increasing'
-            head = currentNode
-            currentNode = head;
-        }
-
-        if(mode && currentNode.next.data == currentNode.data) {
-            sameValueNode = true
+            prevNode = currentNode
             currentNode = currentNode.next
             continue
         }
 
-        if(sameValueNode && currentNode.next.data != currentNode.data) {
-            currentNode.next = null
-            break
-        }
-
-        if(mode == 'decreasing' && currentNode.next && currentNode.next.data != currentNode.data - 1){ 
-            currentNode.next = null
-            break
-        }
-
-        if(mode == 'increasing' && currentNode.next && currentNode.next.data != currentNode.data + 1){ 
-            currentNode.next = null
-            break
+        if(currentNode.data == prevNode.data - 1 || (prevNode.data == currentNode.data)) {
+            // console.log('next data: ', currentNode.data);
+            prevNode = currentNode
+        } else {
+            prevNode.next = currentNode.next
         }
         currentNode = currentNode.next
     }
-    console.log(head);
+    console.log(JSON.stringify(head));
 }
 locateLongestList(head);

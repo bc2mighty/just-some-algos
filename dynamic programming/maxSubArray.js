@@ -30,6 +30,6 @@ function maxSubArray(array) {
 }
 
 maxSubArray([-2,1,-3,4,-1,2,1,-5,4])
-maxSubArray([1])
-maxSubArray([5,4,-1,7,8])
-maxSubArray([-2, -3, 4, -1, -2, 1, 5, -3])
+// maxSubArray([1])
+// maxSubArray([5,4,-1,7,8])
+// maxSubArray([-2, -3, 4, -1, -2, 1, 5, -3])
